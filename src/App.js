@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [num1, setNum1] = useState(0);
+    const [num2, setNum2] = useState(0);
+    const [sum, setSum] = useState(0);
+
+    const handleSum = () => {
+        setSum(Number(num1) + Number(num2));
+    };
+
+    return (
+        <div style={{ textAlign: "center", marginTop: "50px" }}>
+            <h1>Sum Calculator</h1>
+            <input
+                type="number"
+                placeholder="Enter first number"
+                onChange={(e) => setNum1(e.target.value)}
+            />
+            <input
+                type="number"
+                placeholder="Enter second number"
+                onChange={(e) => setNum2(e.target.value)}
+            />
+            <button onClick={handleSum}>Calculate Sum</button>
+            <h2>Result: {sum}</h2>
+        </div>
+    );
 }
 
 export default App;
